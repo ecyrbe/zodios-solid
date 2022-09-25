@@ -1,47 +1,3 @@
- <h1 align="center">Zodios Solid</h1>
- <p align="center">
-   <a href="https://github.com/ecyrbe/zodios-solid">
-     <img align="center" src="https://raw.githubusercontent.com/ecyrbe/zodios-solid/main/docs/logo.svg" width="128px" alt="Zodios logo">
-   </a>
- </p>
- 
- <p align="center">
-    React hooks for zodios backed by <a src="https://tanstack.com/query/v4/docs/adapters/solid-query" >solid-query</a>
- </p>
- 
- <p align="center">
-   <a href="https://www.npmjs.com/package/@zodios/solid">
-   <img src="https://img.shields.io/npm/v/@zodios/solid.svg" alt="langue typescript">
-   </a>
-   <a href="https://www.npmjs.com/package/@zodios/solid">
-   <img alt="npm" src="https://img.shields.io/npm/dw/@zodios/solid">
-   </a>
-   <a href="https://github.com/ecyrbe/zodios-solid/blob/main/LICENSE">
-    <img alt="GitHub" src="https://img.shields.io/github/license/ecyrbe/zodios-solid">   
-   </a>
-   <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/ecyrbe/zodios-solid/CI">
- </p>
-
-# Install
-
-```bash
-> npm install @zodios/solid
-```
-
-or
-
-```bash
-> yarn add @zodios/solid
-```
-
-# Usage
-
-Zodios comes with a Query and Mutation hook helper.  
-It's a thin wrapper around Solid-Query but with zodios auto completion.
-  
-Zodios query hook also returns an invalidation helper to allow you to reset react query cache easily
-  
-```typescript
 import { createSignal, For, Match, Show, Switch } from "solid-js";
 import { QueryClient, QueryClientProvider } from "@tanstack/solid-query";
 import { makeApi, Zodios } from "@zodios/core";
@@ -171,4 +127,3 @@ export const App = () => {
     </QueryClientProvider>
   );
 };
-```
