@@ -57,10 +57,23 @@ type MutationOptions<
   "mutationFn"
 >;
 
+type MutationOptionsByAlias<Api extends unknown[], Alias extends string> = Omit<
+  CreateMutationOptions<
+    Awaited<ResponseByAlias<Api, Alias>>,
+    unknown,
+    UndefinedIfNever<BodyByAlias<Api, Alias>>
+  >,
+  "mutationFn"
+>;
+
 type QueryOptions<
   Api extends unknown[],
   Path extends Paths<Api, "get">
 > = Awaited<CreateQueryOptions<Response<Api, "get", Path>>>;
+
+type QueryOptionsByAlias<Api extends unknown[], Alias extends string> = Awaited<
+  CreateQueryOptions<ResponseByAlias<Api, Alias>>
+>;
 
 type ImmutableQueryOptions<
   Api extends unknown[],
@@ -78,15 +91,6 @@ export type ImmutableInfiniteQueryOptions<
   M extends Method,
   Path extends Paths<Api, M>
 > = Awaited<CreateInfiniteQueryOptions<Response<Api, M, Path>>>;
-
-type MutationOptionsByAlias<Api extends unknown[], Alias extends string> = Omit<
-  CreateMutationOptions<
-    Awaited<ResponseByAlias<Api, Alias>>,
-    unknown,
-    UndefinedIfNever<BodyByAlias<Api, Alias>>
-  >,
-  "mutationFn"
->;
 
 export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   constructor(
@@ -504,7 +508,7 @@ export type ZodiosHooksAliases<Api extends unknown[]> = MergeUnion<
                         Uncapitalize<AliasName>
                       >,
                       queryOptions?: Omit<
-                        CreateQueryOptions,
+                        QueryOptionsByAlias<Api, Uncapitalize<AliasName>>,
                         "queryKey" | "queryFn"
                       >
                     ) => CreateQueryResult<
@@ -534,7 +538,7 @@ export type ZodiosHooksAliases<Api extends unknown[]> = MergeUnion<
                       Uncapitalize<AliasName>
                     >,
                     queryOptions?: Omit<
-                      CreateQueryOptions,
+                      QueryOptionsByAlias<Api, Uncapitalize<AliasName>>,
                       "queryKey" | "queryFn"
                     >
                   ) => CreateQueryResult<
