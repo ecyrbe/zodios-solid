@@ -6,7 +6,7 @@
  </p>
  
  <p align="center">
-    React hooks for zodios backed by <a src="https://tanstack.com/query/v4/docs/adapters/solid-query" >solid-query</a>
+    Solid hooks for zodios backed by <a src="https://tanstack.com/query/v4/docs/adapters/solid-query" >solid-query</a>
  </p>
  
  <p align="center">
