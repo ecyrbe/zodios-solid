@@ -1,7 +1,7 @@
 {
   "name": "@zodios/solid",
   "description": "Solid hooks for zodios",
-  "version": "9.1.3",
+  "version": "9.1.4",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
