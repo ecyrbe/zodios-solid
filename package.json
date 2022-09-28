@@ -48,7 +48,7 @@
     "@types/jest": "29.0.3",
     "@types/moxios": "0.4.15",
     "@types/node": "17.0.17",
-    "@zodios/core": "9.3.0",
+    "@zodios/core": "9.3.1",
     "axios": "0.27.2",
     "babel-preset-solid": "1.5.6",
     "cors": "2.8.5",
