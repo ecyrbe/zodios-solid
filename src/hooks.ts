@@ -16,22 +16,22 @@ import {
 import { ZodiosError, ZodiosInstance } from "@zodios/core";
 import type {
   AnyZodiosMethodOptions,
-  Body,
   Method,
-  Paths,
-  Response,
-  ZodiosEnpointDescriptions,
-  ZodiosEndpointDescription,
+  ZodiosBodyByPath,
+  ZodiosBodyByAlias,
+  ZodiosPathsByMethod,
+  ZodiosResponseByPath,
+  ZodiosResponseByAlias,
+  ZodiosEndpointDefinition,
+  ZodiosEndpointDefinitions,
+  ZodiosEndpointDefinitionByAlias,
   ZodiosMethodOptions,
   ZodiosRequestOptions,
-  BodyByAlias,
-  QueryParams,
-  ResponseByAlias,
-  ZodiosConfigByAlias,
+  ZodiosQueryParamsByPath,
+  ZodiosRequestOptionsByAlias,
 } from "@zodios/core";
 import { AxiosError } from "axios";
 import type {
-  AliasEndpointApiDescription,
   Aliases,
   MutationMethod,
   ZodiosAliases,
@@ -47,58 +47,62 @@ type UndefinedIfNever<T> = IfEquals<T, never, undefined, T>;
 type Errors = Error | ZodiosError | AxiosError;
 
 type MutationOptions<
-  Api extends ZodiosEndpointDescription[],
+  Api extends ZodiosEndpointDefinition[],
   M extends Method,
-  Path extends Paths<Api, M>
+  Path extends ZodiosPathsByMethod<Api, M>
 > = Omit<
   CreateMutationOptions<
-    Awaited<Response<Api, M, Path>>,
+    Awaited<ZodiosResponseByPath<Api, M, Path>>,
     Errors,
-    UndefinedIfNever<Body<Api, M, Path>>
+    UndefinedIfNever<ZodiosBodyByPath<Api, M, Path>>
   >,
   "mutationFn"
 >;
 
 type MutationOptionsByAlias<
-  Api extends ZodiosEndpointDescription[],
+  Api extends ZodiosEndpointDefinitions,
   Alias extends string
 > = Omit<
   CreateMutationOptions<
-    Awaited<ResponseByAlias<Api, Alias>>,
+    Awaited<ZodiosResponseByAlias<Api, Alias>>,
     Errors,
-    UndefinedIfNever<BodyByAlias<Api, Alias>>
+    UndefinedIfNever<ZodiosBodyByAlias<Api, Alias>>
   >,
   "mutationFn"
 >;
 
 type QueryOptions<
-  Api extends ZodiosEndpointDescription[],
-  Path extends Paths<Api, "get">
-> = Awaited<CreateQueryOptions<Response<Api, "get", Path>, Errors>>;
+  Api extends ZodiosEndpointDefinitions,
+  Path extends ZodiosPathsByMethod<Api, "get">
+> = Awaited<CreateQueryOptions<ZodiosResponseByPath<Api, "get", Path>, Errors>>;
 
 type QueryOptionsByAlias<
-  Api extends ZodiosEndpointDescription[],
+  Api extends ZodiosEndpointDefinitions,
   Alias extends string
-> = Awaited<CreateQueryOptions<ResponseByAlias<Api, Alias>, Errors>>;
+> = Awaited<CreateQueryOptions<ZodiosResponseByAlias<Api, Alias>, Errors>>;
 
 type ImmutableQueryOptions<
-  Api extends ZodiosEndpointDescription[],
+  Api extends ZodiosEndpointDefinitions,
   M extends Method,
-  Path extends Paths<Api, M>
-> = Awaited<CreateQueryOptions<Response<Api, M, Path>, Errors>>;
+  Path extends ZodiosPathsByMethod<Api, M>
+> = Awaited<CreateQueryOptions<ZodiosResponseByPath<Api, M, Path>, Errors>>;
 
 type InfiniteQueryOptions<
-  Api extends ZodiosEndpointDescription[],
-  Path extends Paths<Api, "get">
-> = Awaited<CreateInfiniteQueryOptions<Response<Api, "get", Path>, Errors>>;
+  Api extends ZodiosEndpointDefinitions,
+  Path extends ZodiosPathsByMethod<Api, "get">
+> = Awaited<
+  CreateInfiniteQueryOptions<ZodiosResponseByPath<Api, "get", Path>, Errors>
+>;
 
 export type ImmutableInfiniteQueryOptions<
-  Api extends ZodiosEndpointDescription[],
+  Api extends ZodiosEndpointDefinitions,
   M extends Method,
-  Path extends Paths<Api, M>
-> = Awaited<CreateInfiniteQueryOptions<Response<Api, M, Path>, Errors>>;
+  Path extends ZodiosPathsByMethod<Api, M>
+> = Awaited<
+  CreateInfiniteQueryOptions<ZodiosResponseByPath<Api, M, Path>, Errors>
+>;
 
-export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
+export class ZodiosHooksClass<Api extends ZodiosEndpointDefinitions> {
   constructor(
     private readonly apiName: string,
     private readonly zodios: ZodiosInstance<Api>
@@ -161,9 +165,9 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
    * @param config - parameters of the api to the endpoint - when providing no parameters, will return the common key for the endpoint
    * @returns - Key
    */
-  getKeyByPath<M extends Method, Path extends Paths<Api, Method>>(
+  getKeyByPath<M extends Method, Path extends ZodiosPathsByMethod<Api, Method>>(
     method: M,
-    path: Path extends Paths<Api, M> ? Path : never,
+    path: Path extends ZodiosPathsByMethod<Api, M> ? Path : never,
     config?: ZodiosMethodOptions<Api, M, Path>
   ) {
     const endpoint = this.getEndpointByPath(method, path);
@@ -187,7 +191,9 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
    */
   getKeyByAlias<Alias extends keyof ZodiosAliases<Api>>(
     alias: Alias extends string ? Alias : never,
-    config?: Alias extends string ? ZodiosConfigByAlias<Api, Alias> : never
+    config?: Alias extends string
+      ? ZodiosRequestOptionsByAlias<Api, Alias>
+      : never
   ) {
     const endpoint = this.getEndpointByAlias(alias);
     if (!endpoint) throw new Error(`No endpoint found for alias '${alias}'`);
@@ -202,7 +208,7 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   }
 
   createQuery<
-    Path extends Paths<Api, "get">,
+    Path extends ZodiosPathsByMethod<Api, "get">,
     TConfig extends ReadonlyDeep<ZodiosMethodOptions<Api, "get", Path>>
   >(
     path: Path,
@@ -221,7 +227,7 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
       () => key,
       query,
       queryOptions
-    ) as CreateQueryResult<Response<Api, "get", Path>, Errors> & {
+    ) as CreateQueryResult<ZodiosResponseByPath<Api, "get", Path>, Errors> & {
       invalidate: () => Promise<void>;
       key: QueryKey;
     };
@@ -231,11 +237,11 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   }
 
   createImmutableQuery<
-    Path extends Paths<Api, "post">,
+    Path extends ZodiosPathsByMethod<Api, "post">,
     TConfig extends ReadonlyDeep<ZodiosMethodOptions<Api, "post", Path>>
   >(
     path: Path,
-    body?: ReadonlyDeep<Body<Api, "post", Path>>,
+    body?: ReadonlyDeep<ZodiosBodyByPath<Api, "post", Path>>,
     config?: TConfig,
     queryOptions?: Omit<
       ImmutableQueryOptions<Api, "post", Path>,
@@ -254,7 +260,7 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
       () => key,
       query,
       queryOptions
-    ) as CreateQueryResult<Response<Api, "post", Path>, Errors> & {
+    ) as CreateQueryResult<ZodiosResponseByPath<Api, "post", Path>, Errors> & {
       invalidate: () => Promise<void>;
       key: QueryKey;
     };
@@ -264,7 +270,7 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   }
 
   createInfiniteQuery<
-    Path extends Paths<Api, "get">,
+    Path extends ZodiosPathsByMethod<Api, "get">,
     TConfig extends ReadonlyDeep<ZodiosMethodOptions<Api, "get", Path>>
   >(
     path: Path,
@@ -274,9 +280,9 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
       "queryKey" | "queryFn"
     > & {
       getPageParamList: () => (
-        | (QueryParams<Api, "get", Path> extends never
+        | (ZodiosQueryParamsByPath<Api, "get", Path> extends never
             ? never
-            : keyof QueryParams<Api, "get", Path>)
+            : keyof ZodiosQueryParamsByPath<Api, "get", Path>)
         | PathParamNames<Path>
       )[];
     }
@@ -317,7 +323,10 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
       () => key,
       query,
       queryOptions as Omit<typeof queryOptions, "getPageParamList">
-    ) as CreateInfiniteQueryResult<Response<Api, "get", Path>, Errors> & {
+    ) as CreateInfiniteQueryResult<
+      ZodiosResponseByPath<Api, "get", Path>,
+      Errors
+    > & {
       invalidate: () => Promise<void>;
       key: QueryKey;
     };
@@ -327,22 +336,22 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   }
 
   createImmutableInfiniteQuery<
-    Path extends Paths<Api, "post">,
+    Path extends ZodiosPathsByMethod<Api, "post">,
     TConfig extends ReadonlyDeep<ZodiosMethodOptions<Api, "post", Path>>
   >(
     path: Path,
-    body?: ReadonlyDeep<Body<Api, "post", Path>>,
+    body?: ReadonlyDeep<ZodiosBodyByPath<Api, "post", Path>>,
     config?: TConfig,
     queryOptions?: Omit<
       ImmutableInfiniteQueryOptions<Api, "post", Path>,
       "queryKey" | "queryFn"
     > & {
       getPageParamList: () => (
-        | keyof Body<Api, "post", Path>
+        | keyof ZodiosBodyByPath<Api, "post", Path>
         | PathParamNames<Path>
-        | (QueryParams<Api, "post", Path> extends never
+        | (ZodiosQueryParamsByPath<Api, "post", Path> extends never
             ? never
-            : keyof QueryParams<Api, "post", Path>)
+            : keyof ZodiosQueryParamsByPath<Api, "post", Path>)
       )[];
     }
   ) {
@@ -397,7 +406,10 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
       () => key,
       query,
       queryOptions as Omit<typeof queryOptions, "getPageParamList">
-    ) as CreateInfiniteQueryResult<Response<Api, "post", Path>, Errors> & {
+    ) as CreateInfiniteQueryResult<
+      ZodiosResponseByPath<Api, "post", Path>,
+      Errors
+    > & {
       invalidate: () => Promise<void>;
       key: QueryKey;
     };
@@ -408,7 +420,7 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
 
   createMutation<
     M extends Method,
-    Path extends Paths<Api, M>,
+    Path extends ZodiosPathsByMethod<Api, M>,
     TConfig extends ReadonlyDeep<ZodiosMethodOptions<Api, M, Path>>
   >(
     method: M,
@@ -416,10 +428,10 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
     config?: TConfig,
     mutationOptions?: MutationOptions<Api, M, Path>
   ) {
-    type MutationVariables = UndefinedIfNever<Body<Api, M, Path>>;
+    type MutationVariables = UndefinedIfNever<ZodiosBodyByPath<Api, M, Path>>;
 
     const mutation: MutationFunction<
-      Response<Api, M, Path>,
+      ZodiosResponseByPath<Api, M, Path>,
       MutationVariables
     > = (variables: MutationVariables) => {
       return this.zodios.request({
@@ -433,7 +445,7 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   }
 
   createGet<
-    Path extends Paths<Api, "get">,
+    Path extends ZodiosPathsByMethod<Api, "get">,
     TConfig extends ReadonlyDeep<ZodiosMethodOptions<Api, "get", Path>>
   >(
     path: Path,
@@ -444,7 +456,7 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   }
 
   createPost<
-    Path extends Paths<Api, "post">,
+    Path extends ZodiosPathsByMethod<Api, "post">,
     TConfig extends ReadonlyDeep<ZodiosMethodOptions<Api, "post", Path>>
   >(
     path: Path,
@@ -455,7 +467,7 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   }
 
   createPut<
-    Path extends Paths<Api, "put">,
+    Path extends ZodiosPathsByMethod<Api, "put">,
     TConfig extends ReadonlyDeep<ZodiosMethodOptions<Api, "put", Path>>
   >(
     path: Path,
@@ -466,7 +478,7 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   }
 
   createPatch<
-    Path extends Paths<Api, "patch">,
+    Path extends ZodiosPathsByMethod<Api, "patch">,
     TConfig extends ReadonlyDeep<ZodiosMethodOptions<Api, "patch", Path>>
   >(
     path: Path,
@@ -477,7 +489,7 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   }
 
   createDelete<
-    Path extends Paths<Api, "delete">,
+    Path extends ZodiosPathsByMethod<Api, "delete">,
     TConfig extends ReadonlyDeep<ZodiosMethodOptions<Api, "delete", Path>>
   >(
     path: Path,
@@ -488,57 +500,57 @@ export class ZodiosHooksClass<Api extends ZodiosEnpointDescriptions> {
   }
 }
 
-export type ZodiosHooksAliases<Api extends ZodiosEndpointDescription[]> = {
-  [Alias in Aliases<Api> as `create${Capitalize<Alias>}`]: AliasEndpointApiDescription<
+export type ZodiosHooksAliases<Api extends ZodiosEndpointDefinitions> = {
+  [Alias in Aliases<Api> as `create${Capitalize<Alias>}`]: ZodiosEndpointDefinitionByAlias<
     Api,
     Alias
   >[number]["method"] extends infer AliasMethod
     ? AliasMethod extends MutationMethod
       ? {
-          immutable: AliasEndpointApiDescription<
+          immutable: ZodiosEndpointDefinitionByAlias<
             Api,
             Alias
           >[number]["immutable"];
           method: AliasMethod;
         } extends { immutable: true; method: "post" }
         ? (
-            body: ReadonlyDeep<BodyByAlias<Api, Alias>>,
-            configOptions?: ZodiosConfigByAlias<Api, Alias>,
+            body: ReadonlyDeep<ZodiosBodyByAlias<Api, Alias>>,
+            configOptions?: ZodiosRequestOptionsByAlias<Api, Alias>,
             queryOptions?: Omit<
               QueryOptionsByAlias<Api, Alias>,
               "queryKey" | "queryFn"
             >
-          ) => CreateQueryResult<ResponseByAlias<Api, Alias>, Errors> & {
+          ) => CreateQueryResult<ZodiosResponseByAlias<Api, Alias>, Errors> & {
             invalidate: () => Promise<void>;
             key: QueryKey;
           }
         : (
-            configOptions?: ZodiosConfigByAlias<Api, Alias>,
+            configOptions?: ZodiosRequestOptionsByAlias<Api, Alias>,
             mutationOptions?: MutationOptionsByAlias<Api, Alias>
           ) => CreateMutationResult<
-            ResponseByAlias<Api, Alias>,
+            ZodiosResponseByAlias<Api, Alias>,
             Errors,
-            UndefinedIfNever<BodyByAlias<Api, Alias>>,
+            UndefinedIfNever<ZodiosBodyByAlias<Api, Alias>>,
             unknown
           >
       : (
-          configOptions?: ZodiosConfigByAlias<Api, Alias>,
+          configOptions?: ZodiosRequestOptionsByAlias<Api, Alias>,
           queryOptions?: Omit<
             QueryOptionsByAlias<Api, Alias>,
             "queryKey" | "queryFn"
           >
-        ) => CreateQueryResult<ResponseByAlias<Api, Alias>, Errors> & {
+        ) => CreateQueryResult<ZodiosResponseByAlias<Api, Alias>, Errors> & {
           invalidate: () => Promise<void>;
           key: QueryKey;
         }
     : never;
 };
 
-export type ZodiosHooksInstance<Api extends ZodiosEnpointDescriptions> =
+export type ZodiosHooksInstance<Api extends ZodiosEndpointDefinitions> =
   ZodiosHooksClass<Api> & ZodiosHooksAliases<Api>;
 
 export type ZodiosHooksConstructor = {
-  new <Api extends ZodiosEnpointDescriptions>(
+  new <Api extends ZodiosEndpointDefinitions>(
     name: string,
     zodios: ZodiosInstance<Api>
   ): ZodiosHooksInstance<Api>;

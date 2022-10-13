@@ -237,11 +237,13 @@ describe("zodios hooks", () => {
     });
 
     beforeEach(() => {
+      // @ts-ignore
       moxios.install(apiClient.axios);
       queryClient.clear();
     });
 
     afterEach(() => {
+      // @ts-ignore
       moxios.uninstall(apiClient.axios);
     });
 
