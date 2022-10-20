@@ -47,6 +47,7 @@ const api = makeApi([
   {
     method: "get",
     path: "/users/:id",
+    alias: "getUser",
     description: "Get a user",
     response: userSchema,
   },
