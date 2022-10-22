@@ -26,6 +26,10 @@
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "tsup",
+    "major-rc": "npm version premajor --preid=rc",
+    "minor-rc": "npm version preminor --preid=rc",
+    "patch-rc": "npm version prepatch --preid=rc",
+    "rc": "npm version prerelease --preid=rc",
     "test": "jest --coverage"
   },
   "peerDependencies": {
