@@ -229,9 +229,7 @@ describe("zodios hooks", () => {
 
   describe("hooks", () => {
     beforeAll(async () => {
-      apiClient = new Zodios(api, {
-        validate: true,
-      });
+      apiClient = new Zodios(api);
 
       apiHooks = new ZodiosHooks("test", apiClient);
     });
