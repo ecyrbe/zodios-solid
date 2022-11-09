@@ -4799,10 +4799,10 @@ solid-js@1.6.1:
   dependencies:
     csstype "^3.1.0"
 
-solid-testing-library@0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/solid-testing-library/-/solid-testing-library-0.4.0.tgz#b657aa0b7ac8ab44f122b738e6014b0de2075313"
-  integrity sha512-U7O8uj5vf2bhIihRJLnSEOeUe2EEJrVxmPUcE/robrq3NcpkAYGTRFufUFm6p0VDkNjAe93NA869w1owsTbNYw==
+solid-testing-library@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/solid-testing-library/-/solid-testing-library-0.5.0.tgz#6a54ee851c02780bf2eae38ce1a296e78f9efd57"
+  integrity sha512-vr4Ke9Dq3bUFLaXOcN8/IVn2e9Q37w4vdmoIOmFBIPs7iCJX9IxuC0IdQqK8nzBZMQqceijkfyCE3Qc407KmaA==
   dependencies:
     "@testing-library/dom" "^8.19.0"
 
