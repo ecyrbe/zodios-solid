@@ -4833,10 +4833,10 @@ solid-jest@0.2.0:
     babel-jest "^27.0.0"
     enhanced-resolve-jest "^1.1.0"
 
-solid-js@1.6.3:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.6.3.tgz#9645c36dfdbdcaed3b0f1ac2133652a3c136db6f"
-  integrity sha512-YoieThdhAKt83O86+DjpKXNlVSU5JYdi21RdYqiEIsWxahOphiAfao8e/zRTLyZEM5ZgyZ3ZHPPgW1HO5537Rw==
+solid-js@1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.6.5.tgz#19d92bce93a576124ea36af012c472d17516f4b4"
+  integrity sha512-q1/wIIRmrWltNnP3PW/e29eRWCC24hX5amBiOXomw2kDiM6JZZ10l+chK/Oi/6ipwUxeabYl5YD2lJOObY9heA==
   dependencies:
     csstype "^3.1.0"
 
