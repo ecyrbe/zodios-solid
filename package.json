@@ -67,7 +67,7 @@
     "jest": "29.3.1",
     "jest-environment-jsdom": "29.3.1",
     "moxios": "0.4.0",
-    "rimraf": "4.1.1",
+    "rimraf": "4.1.2",
     "solid-jest": "0.2.0",
     "solid-js": "1.6.9",
     "solid-testing-library": "0.5.0",
