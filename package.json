@@ -70,7 +70,7 @@
     "rimraf": "4.1.2",
     "solid-jest": "0.2.0",
     "solid-js": "1.6.9",
-    "solid-testing-library": "0.5.0",
+    "solid-testing-library": "0.5.1",
     "ts-jest": "29.0.5",
     "ts-node": "10.9.1",
     "tsup": "6.3.0",
