@@ -2289,16 +2289,16 @@ babel-plugin-jest-hoist@^29.4.0:
     "@types/babel__core" "^7.1.14"
     "@types/babel__traverse" "^7.0.6"
 
-babel-plugin-jsx-dom-expressions@^0.35.13:
-  version "0.35.13"
-  resolved "https://registry.yarnpkg.com/babel-plugin-jsx-dom-expressions/-/babel-plugin-jsx-dom-expressions-0.35.13.tgz#4ed98546c1834700c8c2e366671771038fd40282"
-  integrity sha512-UlbzUP/2kFxwaEs1VDrPjCr84/oGDQUohf+vbyD8u8Ct3tSpfQz+OGrj+GBqf0Ib1Rxz7dSH+1mZz+kuxzeCSA==
+babel-plugin-jsx-dom-expressions@^0.35.15:
+  version "0.35.15"
+  resolved "https://registry.yarnpkg.com/babel-plugin-jsx-dom-expressions/-/babel-plugin-jsx-dom-expressions-0.35.15.tgz#b107df0e8c7ae64b15d24ca511a7957e6ccc56f2"
+  integrity sha512-33GQnanjYKefOTO2lQK6EaKXPJ1W8vtzvBneGfhKaOZHQJLqe61P93jP0TLTz67sqsA0m1ph1cNdGpLc/Nx2Xg==
   dependencies:
     "@babel/helper-module-imports" "7.18.6"
     "@babel/plugin-syntax-jsx" "^7.18.6"
     "@babel/types" "^7.20.7"
     html-entities "2.3.3"
-    validate-html-nesting "^1.1.0"
+    validate-html-nesting "^1.2.0"
 
 babel-plugin-polyfill-corejs2@^0.3.3:
   version "0.3.3"
@@ -2358,12 +2358,12 @@ babel-preset-jest@^29.4.0:
     babel-plugin-jest-hoist "^29.4.0"
     babel-preset-current-node-syntax "^1.0.0"
 
-babel-preset-solid@1.6.9:
-  version "1.6.9"
-  resolved "https://registry.yarnpkg.com/babel-preset-solid/-/babel-preset-solid-1.6.9.tgz#404c5c5a9e1232636964e1c8cba4106a519bcf67"
-  integrity sha512-Dz4xROTGtAZ2B9+79KYUzi/bhjNGsx+8c+AD3VO/Cg1CisM1qq29XsnkWrRJeTMMn3XZkAI/Bf5Rz37d/gvPVQ==
+babel-preset-solid@1.6.10:
+  version "1.6.10"
+  resolved "https://registry.yarnpkg.com/babel-preset-solid/-/babel-preset-solid-1.6.10.tgz#58d276f308f6c35dd9bb415f929b84f4fb0fd642"
+  integrity sha512-qBLjzeWmgY5jX11sJg/lriXABYdClfJrJJrIHaT6G5EuGhxhm6jn7XjqXjLBZHBgy5n/Z+iqJ5YfQj8KG2jKTA==
   dependencies:
-    babel-plugin-jsx-dom-expressions "^0.35.13"
+    babel-plugin-jsx-dom-expressions "^0.35.15"
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -5279,10 +5279,10 @@ v8-to-istanbul@^9.0.1:
     "@types/istanbul-lib-coverage" "^2.0.1"
     convert-source-map "^1.6.0"
 
-validate-html-nesting@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/validate-html-nesting/-/validate-html-nesting-1.1.0.tgz#6edff9e153791261bf91de2a90deddcf0c662c6c"
-  integrity sha512-m+tQ7mVs2AMXRP0hFFQzmdG2BRMyLJtH39AtCpJDhiHM4oL6eccFnNhnNnwrBRNlPr78Opgh3CC9am2bnaJ2Tg==
+validate-html-nesting@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/validate-html-nesting/-/validate-html-nesting-1.2.0.tgz#763580fa07009ddbb1c0d28d5686230b140e2b7f"
+  integrity sha512-sI65QUd3T/e5wbQkdPKjikFsIVLPIaOQK+9uowPp6/k609SN8hs5eqBLrnN5DeW9Kd932Q4Imo0fzK2dxoOsCA==
 
 vary@^1, vary@~1.1.2:
   version "1.1.2"
