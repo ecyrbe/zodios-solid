@@ -2421,10 +2421,10 @@ babel-plugin-jest-hoist@^29.5.0:
     "@types/babel__core" "^7.1.14"
     "@types/babel__traverse" "^7.0.6"
 
-babel-plugin-jsx-dom-expressions@^0.35.23:
-  version "0.35.23"
-  resolved "https://registry.yarnpkg.com/babel-plugin-jsx-dom-expressions/-/babel-plugin-jsx-dom-expressions-0.35.23.tgz#748598aaf7e733a411d825dcd6de0f23d95a88dd"
-  integrity sha512-KaBiZPm2riB5jyRUy5BVaz8TkKcyAx2frePOG2lj5vbYsBpZHIknQkUU/csWr+EeV75h/mRHIOzLo2mX4Dxq3g==
+babel-plugin-jsx-dom-expressions@^0.36.0:
+  version "0.36.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-jsx-dom-expressions/-/babel-plugin-jsx-dom-expressions-0.36.0.tgz#cf71c360340e09d4892e0749783a5ff39990271e"
+  integrity sha512-Ovj0MZ39KfuDKVfhL+F9xbzWoQ+ThW2ilILXWQJNpHXuzv0vAtxH5el9le4To/nWFMEdUE3xmmeDdLDUZ+9FDg==
   dependencies:
     "@babel/helper-module-imports" "7.18.6"
     "@babel/plugin-syntax-jsx" "^7.18.6"
@@ -2490,12 +2490,12 @@ babel-preset-jest@^29.5.0:
     babel-plugin-jest-hoist "^29.5.0"
     babel-preset-current-node-syntax "^1.0.0"
 
-babel-preset-solid@1.6.16:
-  version "1.6.16"
-  resolved "https://registry.yarnpkg.com/babel-preset-solid/-/babel-preset-solid-1.6.16.tgz#f698e498eeed221f3007970dd6a4b8d5d19715ce"
-  integrity sha512-xVEmdgvS5mNAdk7uoKFVRfdjihuhPl9n4MGEaicFRafAraaPr49/y7yLBaOZfeJbL0AVwDlLximseZbtoME4cQ==
+babel-preset-solid@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-solid/-/babel-preset-solid-1.7.0.tgz#87e1122ab0ad38733711c9b34c7cf3d682d5b96b"
+  integrity sha512-EjD3lAgicteKrQzFhMtfgEEdPKHsDtGLyJEGmky3kLH952wZys5sj1sTuO+JB6QSfUq1hbJCBvlB5aCIvdf4NQ==
   dependencies:
-    babel-plugin-jsx-dom-expressions "^0.35.23"
+    babel-plugin-jsx-dom-expressions "^0.36.0"
 
 balanced-match@^1.0.0:
   version "1.0.2"
