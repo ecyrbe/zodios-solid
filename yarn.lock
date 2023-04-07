@@ -5200,10 +5200,10 @@ solid-jest@0.2.0:
     babel-jest "^27.0.0"
     enhanced-resolve-jest "^1.1.0"
 
-solid-js@1.7.2:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.7.2.tgz#113150d4641d9ac5f2f5db2862ca2296401c1288"
-  integrity sha512-01f8GIc+HTTlfDXtK+TFku3AllHyJ3hNsIpxM2qpObRP4VbEGVIP6VbULnThPlpse+J1y/I/1N9QeQ9MNkE8Ow==
+solid-js@1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.7.3.tgz#3e2e2ce7f2415336f5c96668f9524ad51f6a718b"
+  integrity sha512-4hwaF/zV/xbNeBBIYDyu3dcReOZBECbO//mrra6GqOrKy4Soyo+fnKjpZSa0nODm6j1aL0iQRh/7ofYowH+jzw==
   dependencies:
     csstype "^3.1.0"
     seroval "^0.5.0"
