@@ -5234,10 +5234,10 @@ solid-jest@0.2.0:
     babel-jest "^27.0.0"
     enhanced-resolve-jest "^1.1.0"
 
-solid-js@1.7.4:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.7.4.tgz#d2d2a2c88285956b330df59d36c3cdf09adcb465"
-  integrity sha512-hD/bzIpaa7DL/LGRRTLFvejQuxQaoXyH+DBgPputJW7zvFigCewQIoDvbwDR4VHTsa8VsMDPzV8BT0F9OqsS1Q==
+solid-js@1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.7.5.tgz#2ef7834c6c8eef9d1b46c25b1c51da4c67492a13"
+  integrity sha512-GfJ8na1e9FG1oAF5xC24BM+ATLym0sfH+ZblkbBFpueYdq3fWAoA5Ve+jGeIeLI7jmMGfa0rUaKruszNm2sH8w==
   dependencies:
     csstype "^3.1.0"
     seroval "^0.5.0"
