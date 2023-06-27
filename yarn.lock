@@ -2882,10 +2882,10 @@ babel-preset-jest@^29.5.0:
     babel-plugin-jest-hoist "^29.5.0"
     babel-preset-current-node-syntax "^1.0.0"
 
-babel-preset-solid@1.7.4:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/babel-preset-solid/-/babel-preset-solid-1.7.4.tgz#37da4a1fb5007ce30c002916b1e7f61e02ce24e4"
-  integrity sha512-0mbHNYkbOVYhH6L95VlHVkBEVQjOXSzUqLDiFxUcsg/tU4yTM/qx7FI8C+kmos9LHckQBSm3wtwoe1BZLNJR1w==
+babel-preset-solid@1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/babel-preset-solid/-/babel-preset-solid-1.7.7.tgz#316ad3e1c11083772358c3b7796a5ab234987a0e"
+  integrity sha512-tdxVzx3kgcIjNXAOmGRbzIhFBPeJjSakiN9yM+IYdL/+LtXNnbGqb0Va5tJb8Sjbk+QVEriovCyuzB5T7jeTvg==
   dependencies:
     babel-plugin-jsx-dom-expressions "^0.36.10"
 
