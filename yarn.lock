@@ -2343,17 +2343,17 @@
   dependencies:
     "@sinonjs/commons" "^2.0.0"
 
-"@tanstack/query-core@4.29.19":
-  version "4.29.19"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.29.19.tgz#49ccbd0606633d1e55baf3b91ab7cc7aef411b1d"
-  integrity sha512-uPe1DukeIpIHpQi6UzIgBcXsjjsDaLnc7hF+zLBKnaUlh7jFE/A+P8t4cU4VzKPMFB/C970n/9SxtpO5hmIRgw==
+"@tanstack/query-core@4.29.23":
+  version "4.29.23"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.29.23.tgz#a38f0efcc4abd5849222a7f382ce3a19a9efb070"
+  integrity sha512-4BMHPrkfYmLP+NvqbbkV7Mk1nnphu+bNmxhhuB0+EMjKA7VfyFCfiyiTf55RRDgLaevyb9LrFK16lHW2owF52w==
 
-"@tanstack/solid-query@4.29.19":
-  version "4.29.19"
-  resolved "https://registry.yarnpkg.com/@tanstack/solid-query/-/solid-query-4.29.19.tgz#7dba89b05ed6fbb3952e4b897f223c5a92d3c929"
-  integrity sha512-RumbsioKk/eP3GSw5CDBTcBpPKxK7jH4w3EcxEqJLo4qgSpU3P6ikH3ihete4jBPzpf18NawKtkwCk7MXWchZQ==
+"@tanstack/solid-query@4.29.23":
+  version "4.29.23"
+  resolved "https://registry.yarnpkg.com/@tanstack/solid-query/-/solid-query-4.29.23.tgz#259a6ec5624f397b17e2ae6c3753d40b8dd902b1"
+  integrity sha512-g9KAkXLQKvXS+09XEKqQ+r3mBoE6wsKEY1UFk9vaCwHH+sqKD4JfPz3VJcW84vaklfZeG1PE8U6a60VxVXkSnA==
   dependencies:
-    "@tanstack/query-core" "4.29.19"
+    "@tanstack/query-core" "4.29.23"
 
 "@testing-library/dom@9.3.1":
   version "9.3.1"
