@@ -46,10 +46,10 @@
     "solid-js": "^1.x"
   },
   "devDependencies": {
-    "@babel/core": "7.23.0",
-    "@babel/preset-env": "7.22.20",
+    "@babel/core": "7.23.2",
+    "@babel/preset-env": "7.23.2",
     "@babel/preset-react": "7.22.15",
-    "@babel/preset-typescript": "7.23.0",
+    "@babel/preset-typescript": "7.23.2",
     "@tanstack/solid-query": "4.36.1",
     "@testing-library/dom": "9.3.3",
     "@testing-library/jest-dom": "6.1.4",
