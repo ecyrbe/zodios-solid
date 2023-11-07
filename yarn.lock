@@ -2738,10 +2738,10 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-3.0.1.tgz#5f8f2bca0a5863cb69bc0b0acd88c96cb1d4ae10"
   integrity sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==
 
-"@types/moxios@0.4.15":
-  version "0.4.15"
-  resolved "https://registry.yarnpkg.com/@types/moxios/-/moxios-0.4.15.tgz#d8b774f360ba652801b5807e0833f6ff30a17770"
-  integrity sha512-eHD7i0/Uu7pFGzS4uIed2InJLj5H6xOOsqPjGtRyvyC/jnzRt6q6Xtnm2PQlkcqKHjRybEqjw71dcPnzfDouhw==
+"@types/moxios@0.4.17":
+  version "0.4.17"
+  resolved "https://registry.yarnpkg.com/@types/moxios/-/moxios-0.4.17.tgz#3a2084b9b11713dde0da8c681db642936d3edf40"
+  integrity sha512-Ef7VE+vfISBbxWMOl40doJpHGpy5lTYJQwWHAy9ah1lrRnsVd+eNt6NjJ2QTAotHpQ7krVrZ3lp8hnxUxvdGuw==
   dependencies:
     axios ">=0.13.0"
 
