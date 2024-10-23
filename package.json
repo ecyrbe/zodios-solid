@@ -69,7 +69,7 @@
     "moxios": "0.4.0",
     "rimraf": "5.0.5",
     "solid-jest": "0.2.0",
-    "solid-js": "1.8.1",
+    "solid-js": "1.9.3",
     "solid-testing-library": "0.5.1",
     "ts-jest": "29.1.1",
     "ts-node": "10.9.1",
